@@ -1,5 +1,5 @@
 function shoppingTime(memberId,money){
-    var objList={
+    const objList={
         sepatuStacattu:1500000,
         bajuZoro:500000,
         bajuHn:250000,
@@ -9,39 +9,53 @@ function shoppingTime(memberId,money){
    
     var obj={}
     var array=[]
-if(memberId===""){
-    return "ga kenal lu"
-}
-else if(money<50000){
-    return "ga pnya duit lu"
+    if(memberId===undefined || money===undefined){
+        return "kosong"
+    }
+
+    if(memberId===""){
+        return "ga kenal lu"
+    }
+    else if(money<50000){
+        return "ga pnya duit lu"
+    }
+
+    obj.Id=memberId
+    obj.money=money
+    var answer=[]
+//cara akses object value kalo dalem for in objList[i], kalo akses object propertiesnya tinggal panggil
+//i nya aja
+    for(var i in objList){
+        if(money-objList[i]<0){
+            duitUtuh=money
+        }
+    else if(money-objList[i]>=0){
+        money-=objList[i]
+        answer.push(i)
+        var sisa =money
+        }
+    }
+    obj.listPurchased=answer
+    obj.changeMoney=sisa
+    return obj
 }
 
-obj.Id=memberId
-obj.money=money
-var sisaUang
-var duitUtuh=money
-console.log(obj)
-for(var property in objList){
-   sisaUang-=objList[property]
-   console.log("loop sisaUang= "+sisaUang)
-   if(sisaUang<0){
-       sisaUang=duitUtuh
-       console.log("sisaUang"+sisaUang)
-   }
-   
-  
-//    if(money>0){
-//     //    obj.blanjaan=[Object.getOwnPropertyNames(objList).forEach(function(val){
-         
-//     //    }) +objList[property]]
-//         console.log("tes")
-//        obj.change=money
-//    }
-   
-   console.log(obj)
-}
-
-    
-}
-
-console.log(shoppingTime('82Ku8Ma742', 400000))
+console.log(shoppingTime('1820RzKrnWn08', 2475000));
+  //{ memberId: '1820RzKrnWn08',
+  // money: 2475000,
+  // listPurchased:
+  //  [ 'Sepatu Stacattu',
+  //    'Baju Zoro',
+  //    'Baju H&N',
+  //    'Sweater Uniklooh',
+  //    'Casing Handphone' ],
+  // changeMoney: 0 }
+console.log(shoppingTime('82Ku8Ma742', 170000));
+//{ memberId: '82Ku8Ma742',
+// money: 170000,
+// listPurchased:
+//  [ 'Casing Handphone' ],
+// changeMoney: 120000 }
+console.log(shoppingTime('', 2475000)); //Mohon maaf, toko X hanya berlaku untuk member saja
+console.log(shoppingTime('234JdhweRxa53', 15000)); //Mohon maaf, uang tidak cukup
+console.log(shoppingTime()); ////Mohon maaf, toko X hanya berlaku untuk member saja
