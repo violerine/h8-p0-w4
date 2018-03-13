@@ -10,21 +10,20 @@ function shoppingTime(memberId,money){
     var obj={}
     var array=[]
     if(memberId===undefined || money===undefined){
-        return "kosong"
+        return "Mohon maaf, toko X hanya berlaku untuk member saja"
     }
 
     if(memberId===""){
-        return "ga kenal lu"
+        return "Mohon maaf, toko X hanya berlaku untuk member saja"
     }
     else if(money<50000){
-        return "ga pnya duit lu"
+        return "Mohon maaf, uang tidak cukup"
     }
 
     obj.Id=memberId
     obj.money=money
     var answer=[]
-//cara akses object value kalo dalem for in objList[i], kalo akses object propertiesnya tinggal panggil
-//i nya aja
+
     for(var i in objList){
         if(money-objList[i]<0){
             duitUtuh=money
