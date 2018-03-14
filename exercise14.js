@@ -7,12 +7,16 @@ function getTotal(arrNumber) {
   var listSort = sorting(arrNumber);
   var listSortLargest=listSort[0]
   var count=0
+  var stringKosong="''"
+ if(arrNumber.length==0){
+   return stringKosong
+ }
   for(var i=0; i<listSort.length; i++){
       if(listSortLargest===listSort[i]){
           count+=1
       }
   }
-  return "angka yang paling besar adalah "+listSortLargest+" dan jumlah kemuncululan adalah "+count+" kali"
+  return "angka yang paling besar adalah "+listSortLargest+" dan jumlah kemunculan sebanyak "+count+" kali"
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
