@@ -14,7 +14,7 @@ function shoppingTime(memberId,money){
     }
 
     if(memberId===""){
-        return "Mohon maaf, toko X hanya berlaku untuk member saja"
+        return "ga kenal lu"
     }
     else if(money<50000){
         return "Mohon maaf, uang tidak cukup"
@@ -23,7 +23,8 @@ function shoppingTime(memberId,money){
     obj.Id=memberId
     obj.money=money
     var answer=[]
-
+//cara akses object value kalo dalem for in objList[i], kalo akses object propertiesnya tinggal panggil
+//i nya aja
     for(var i in objList){
         if(money-objList[i]<0){
             duitUtuh=money
